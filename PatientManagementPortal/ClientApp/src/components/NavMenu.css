@@ -19,5 +19,56 @@ html {
 
 
 .drawer {
-    width: 350px !important;
+    background-color: rgb(155,168,174);
+    border-right: 2px solid rgb(0, 0, 0);
+}
+
+.toolBar {
+    background-color: rgb(73,80,84) !important;
+    text-align: center !important;
+    color: rgb(255, 255, 255) !important;
+    border-bottom: none;
+}
+
+.accountIcon {
+    font-size: 100px !important;
+    color: rgb(0, 0, 0);
+}
+
+.account-icon-text {
+    color: rgb(0, 0, 0);
+}
+
+.account-icon-button {
+    background-color: rgb(232, 233, 235) !important;
+}
+
+.menu-icon {
+    color: rgb(0, 0, 0);
+}
+
+.menu-icon-button {
+    background-color: rgb(232, 233, 235) !important;
+}
+
+.menu-icon-button:hover {
+    background-color: rgb(255, 255, 255) !important;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.menu-icon-text {
+    color: rgb(0, 0, 0);
+}
+
+.menuListContainer {
+    padding-top: 10vh;
+    background-color: rgb(0, 0, 0);
+    border-right: 1px solid rgb(0, 0, 0);
+}
+
+
+.bottom-navigation {
+    justify-content: center !important;
+    bottom: 0%;
+    position: fixed;
 }

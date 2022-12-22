@@ -1,20 +1,13 @@
 import React, { Component } from 'react';
-import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
-import { Link } from 'react-router-dom';
-import Drawer from '@mui/material/Drawer';
-import DatasetIcon from '@mui/icons-material/Dataset';
+import { useHistory } from 'react-router-dom';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import HomeIcon from '@mui/icons-material/Home';
 import MedicalInformationIcon from '@mui/icons-material/MedicalInformation';
-import Toolbar from '@mui/material/Toolbar';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import PsychologyIcon from '@mui/icons-material/Psychology';
-import AppBar from '@mui/material/AppBar';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -22,70 +15,69 @@ import ListItemText from '@mui/material/ListItemText';
 import List from '@mui/material/List';
 import './NavMenu.css';
 
-export const NavMenu = () => {
-
-    const width = 350;
+export const NavMenu = (props) => {
 
     return (
-        <div>
-            <AppBar position="fixed">
-                <Toolbar style={{ textAlign: "center" }}>
-                    Tool Bar
-                </Toolbar>
-            </AppBar>
-            <Drawer
-                variant="permanent"
-                anchor="left"
-                style={{width: "350px"}}
-            >
-                <List>
-                    <ListItem disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon><AccountCircleIcon style={{ fontSize: "100px" }} /></ListItemIcon>
-                            <ListItemText primary={"Welcome, User"} />
+        <div style={{ borderRight: "2px solid black", float: "right", height: "100vh", backgroundColor: "rgb(232, 233, 235)"}}>
+            <List>
+                <ListItem disablePadding>
+                    <ListItemButton className="account-icon-button">
+                        <ListItemIcon><AccountCircleIcon className="accountIcon" /></ListItemIcon>
+                        <ListItemText className="account-icon-text" primary={"Welcome, User"} />
+                    </ListItemButton>
+                </ListItem>
+                <hr style={{ backgroundColor: "rgb(0, 0, 0)" }} />
+                {props.options.map((o, i) => (
+                    <ListItem key={i} disablePadding>
+                        <ListItemButton onClick={(event) => props.optionUpdater(o.component)} className="menu-icon-button">
+                            <ListItemIcon>{o.icon}</ListItemIcon>
+                            <ListItemText className="menu-icon-text" primary={o.name} />
                         </ListItemButton>
                     </ListItem>
-                    <hr />
-                    <ListItem disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon><HomeIcon /></ListItemIcon>
-                            <ListItemText primary={"Home"} />
-                        </ListItemButton>
-                    </ListItem>
-                    <ListItem disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon><MedicalInformationIcon /></ListItemIcon>
-                            <ListItemText primary={"Patients"} />
-                        </ListItemButton>
-                    </ListItem>
-                    <ListItem disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon><PsychologyIcon /></ListItemIcon>
-                            <ListItemText primary={"Clinicians"} />
-                        </ListItemButton>
-                    </ListItem>
-                    <ListItem disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon><CalendarMonthIcon /></ListItemIcon>
-                            <ListItemText primary={"Appointments"} />
-                        </ListItemButton>
-                    </ListItem>
-                    <ListItem disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon><BarChartIcon /></ListItemIcon>
-                            <ListItemText primary={"Reports"} />
-                        </ListItemButton>
-                    </ListItem>
-                </List>
-                {/*<BottomNavigation*/}
-                {/*    showLabels*/}
-                {/*    style={{position: "fixed", bottom: "0%"}}*/}
-                {/*>*/}
-                {/*    <BottomNavigationAction label="Settings" icon={<SettingsIcon />} />*/}
-                {/*    <BottomNavigationAction label="Log Out" icon={<LogoutIcon />} />*/}
-                {/*</BottomNavigation>*/}
-            <Toolbar />
-            </Drawer>
+                    ))}
+                {/*<ListItem disablePadding>*/}
+                {/*    <ListItemButton className="menu-icon-button">*/}
+                {/*        <ListItemIcon><HomeIcon className="menu-icon" /></ListItemIcon>*/}
+                {/*        <ListItemText className="menu-icon-text" primary={"Home"} />*/}
+                {/*    </ListItemButton>*/}
+                {/*</ListItem>*/}
+                {/*<ListItem disablePadding>*/}
+                {/*    <ListItemButton className="menu-icon-button">*/}
+                {/*        <ListItemIcon><MedicalInformationIcon className="menu-icon" /></ListItemIcon>*/}
+                {/*        <ListItemText className="menu-icon-text" primary={"Patients"} />*/}
+                {/*    </ListItemButton>*/}
+                {/*</ListItem>*/}
+                {/*<ListItem disablePadding>*/}
+                {/*    <ListItemButton className="menu-icon-button">*/}
+                {/*        <ListItemIcon><PsychologyIcon className="menu-icon" /></ListItemIcon>*/}
+                {/*        <ListItemText className="menu-icon-text" primary={"Clinicians"} />*/}
+                {/*    </ListItemButton>*/}
+                {/*</ListItem>*/}
+                {/*<ListItem disablePadding>*/}
+                {/*    <ListItemButton className="menu-icon-button">*/}
+                {/*        <ListItemIcon><CalendarMonthIcon className="menu-icon" /></ListItemIcon>*/}
+                {/*        <ListItemText className="menu-icon-text" primary={"Appointments"} />*/}
+                {/*    </ListItemButton>*/}
+                {/*</ListItem>*/}
+                {/*<ListItem disablePadding>*/}
+                {/*    <ListItemButton className="menu-icon-button">*/}
+                {/*        <ListItemIcon><BarChartIcon className="menu-icon" /></ListItemIcon>*/}
+                {/*        <ListItemText className="menu-icon-text" primary={"Reports"} />*/}
+                {/*    </ListItemButton>*/}
+                {/*</ListItem>*/}
+                {/*<ListItem disablePadding>*/}
+                {/*    <ListItemButton className="menu-icon-button">*/}
+                {/*        <ListItemIcon><SettingsIcon className="menu-icon" /></ListItemIcon>*/}
+                {/*        <ListItemText className="menu-icon-text" primary={"Settings"} />*/}
+                {/*    </ListItemButton>*/}
+                {/*</ListItem>*/}
+                {/*<ListItem disablePadding style={{marginBottom: "0%"}}>*/}
+                {/*    <ListItemButton className="menu-icon-button">*/}
+                {/*        <ListItemIcon><LogoutIcon className="menu-icon" /></ListItemIcon>*/}
+                {/*        <ListItemText className="menu-icon-text" primary={"Log Out"} />*/}
+                {/*    </ListItemButton>*/}
+                {/*</ListItem>*/}
+            </List>
         </div>
     );
 }
